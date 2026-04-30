@@ -19,15 +19,3 @@ sequenceDiagram
 
     Note right of selain: Selain ei tee mitään palvelimen vastauksen perusteella —<br/>näkymä päivitettiin jo aiemmin paikallisesti.
 ```
-
-## Ero tavalliseen `/notes`-versioon
-
-| | Tavallinen `/notes` | SPA `/spa` |
-|---|---|---|
-| Pyynnön osoite | `POST /new_note` | `POST /new_note_spa` |
-| Datan muoto | lomakedata (`application/x-www-form-urlencoded`) | JSON (`application/json`) |
-| Palvelimen vastaus | 302-uudelleenohjaus | 201 Created (ei uudelleenohjausta) |
-| Sivun uudelleenlataus | kyllä — koko sivu, CSS, JS ja data.json haetaan uudelleen | ei — vain yksi POST-pyyntö |
-| Näkymän päivitys | palvelin lähettää uuden HTML:n | selain päivittää DOM:in itse JavaScriptillä |
-
-SPA-versiossa siis ainoastaan **yksi HTTP-pyyntö** (POST) liikkuu verkossa muistiinpanoa luotaessa, kun taas tavallisessa versiossa selain joutuu lähetyksen jälkeen lataamaan koko sivun ja sen resurssit uudestaan.
