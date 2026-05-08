@@ -1,2 +1,2 @@
-# fso0
-fso0 kurssit
+# fso
+fso kurssit
